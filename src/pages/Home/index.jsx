@@ -17,6 +17,7 @@ function App() {
   async function deleteUser(id){
     if (id === false) return
     await api.delete(`/users/${id}`)
+    getUsers()
   }
 
   async function createUser(e){
@@ -37,11 +38,12 @@ function App() {
       email: inputEmail.current.value,
       age: inputAge.current.value
     })
+    getUsers()
   }
 
   useEffect(() => {
     getUsers()
-  }, [users])  //Toda vez que carregar minha tela, essa função será chamada
+  }, [])  //Toda vez que carregar minha tela, essa função será chamada
 
   return(
     <div className="container">
